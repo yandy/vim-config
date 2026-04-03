@@ -1,7 +1,7 @@
-# vim-config
+# neovim-config
 
 ## usage
 
 ```sh
-git clone https://github.com/yandy/vim-config.git ~/.config/vim
+git clone https://github.com/yandy/neovim-config.git ~/.config/nvim
 ```
