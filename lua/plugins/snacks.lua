@@ -4,7 +4,11 @@ vim.pack.add({
 
 require("snacks").setup({
     bigfile = {},
-    picker = {},
+    picker = {
+        ui_select = true,
+        matcher = { frecency = true, cwd_bonus = true, history_bonus = true },
+        formatters = { icon_width = 3 },
+    },
     explorer = {},
     input = {},
     terminal = {},
@@ -46,5 +50,16 @@ vim.keymap.set("n", "<leader>fh", Snacks.picker.help, { desc = "Find content" })
 
 vim.keymap.set("n", "<leader>tt", function() Snacks.terminal() end, { desc = "Open Terminal" })
 vim.keymap.set("t", "<leader>tn", [[<C-\><C-n>]], { desc = "Return to Normal Terminal" })
+
+vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
+vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "References", nowait = true })
+vim.keymap.set("n", "gi", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
+vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
+vim.keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Current Buffer Symbols" })
+vim.keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,
+    { desc = "LSP Workspace Symbols" })
+
+vim.keymap.set("n", "<leader>ld", function() Snacks.picker.diagnostics() end, { desc = "Document Diagnostics" })
+vim.keymap.set("n", "<leader>lD", function() Snacks.picker.diagnostics_buffer() end, { desc = "Workspace Diagnostics" })
 
 vim.keymap.set("n", "<leader>lg", function() Snacks.lazygit() end, { desc = "Toggle lazygit" })

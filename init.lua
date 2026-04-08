@@ -4,4 +4,4 @@ require("config.autocmds")
 require("config.lsp")
 
 require("plugins.snacks")
-
+require("plugins.opencode")
