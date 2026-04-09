@@ -6,7 +6,7 @@
 sudo pacman -S neovim lazygit wl-clipboard luarocks tree-sitter-grammars lua-language-server
 
 bun add -g typescript-language-server typescript @tailwindcss/language-server
-uv tool install ruff
+uv tool install basedpyright
 ```
 
 #### explorer
