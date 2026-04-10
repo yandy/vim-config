@@ -12,9 +12,15 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
                     auto_show = true,
                 },
             },
-            cmdline = { enabled = true, },
+            cmdline = {
+                keymap = { preset = 'inherit' },
+                completion = { menu = { auto_show = true } },
+            },
             signature = { enabled = true, },
-            keymap = { preset = 'default' },
+            keymap = {
+                preset = 'default',
+                ['<Tab>'] = { 'select_and_accept', 'fallback' },
+            },
         })
     end
 })
