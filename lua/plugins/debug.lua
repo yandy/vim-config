@@ -106,20 +106,37 @@ vim.api.nvim_create_autocmd("FileType", {
         }
 
         -- javascript
-        dap.adapters["js-debug"] = {
-            type = "server",
-            host = "localhost",
-            port = "${port}",
-            executable = {
-                command = "bun",
-                args = { vim.fn.stdpath("config") .. "/vendor/js-debug/src/dapDebugServer.js", "${port}" },
+        for _, adapterType in ipairs({ "node", "msedge" }) do
+            local pwaType = "pwa-" .. adapterType
+
+            dap.adapters[pwaType] = {
+                type = "server",
+                host = "localhost",
+                port = "${port}",
+                executable = {
+                    command = "bun",
+                    args = { vim.fn.stdpath("config") .. "/vendor/js-debug/src/dapDebugServer.js", "${port}" },
+                }
             }
-        }
+            -- this allow us to handle launch.json configurations
+            -- which specify type as "node" or "chrome" or "msedge"
+            dap.adapters[adapterType] = function(cb, config)
+                local nativeAdapter = dap.adapters[pwaType]
+
+                config.type = pwaType
+
+                if type(nativeAdapter) == "function" then
+                    nativeAdapter(cb, config)
+                else
+                    cb(nativeAdapter)
+                end
+            end
+        end
 
         for _, language in ipairs({ "typescript", "javascript" }) do
             dap.configurations[language] = {
                 {
-                    type = "js-debug",
+                    type = "pwa-node",
                     request = "launch",
                     name = "file",
                     runtimeExecutable = "bun",
@@ -134,7 +151,7 @@ vim.api.nvim_create_autocmd("FileType", {
                     end,
                 },
                 {
-                    type = "js-debug",
+                    type = "pwa-node",
                     request = "launch",
                     name = "cmd",
                     command = function()
@@ -142,10 +159,12 @@ vim.api.nvim_create_autocmd("FileType", {
                     end
                 },
                 {
-                    type = "js-debug",
+                    type = "pwa-msedge",
                     request = "launch",
                     name = "browser",
-                    url = "http://localhost:3000/"
+                    url = "http://localhost:3000/",
+                    webRoot = "${workspaceFolder}",
+                    sourceMaps = true,
                 }
             }
         end
