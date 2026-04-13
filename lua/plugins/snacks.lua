@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>e", function() Snacks.explorer.open() end, { desc =
 
 vim.keymap.set({ "n", "t" }, "<c-`>", function() Snacks.terminal.toggle() end, { desc = "Toggle Terminal" })
 
-vim.keymap.set("n", "<leader>,", function() Snacks.lazygit() end, { desc = "Toggle lazygit" })
+vim.keymap.set("n", "<leader>G", function() Snacks.lazygit() end, { desc = "Toggle lazygit" })
 
 vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Smart find files" })
 vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "grep files" })
