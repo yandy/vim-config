@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd("FileType", {
         }
 
         -- javascript
-        for _, adapterType in ipairs({ "node", "msedge" }) do
+        for _, adapterType in ipairs({ "node", "node-terminal", "msedge", "chrome" }) do
             local pwaType = "pwa-" .. adapterType
 
             dap.adapters[pwaType] = {
@@ -117,9 +117,10 @@ vim.api.nvim_create_autocmd("FileType", {
             dap.configurations[language] = {
                 {
                     type = "pwa-node",
-                    request = "attach",
-                    name = "attach",
-                    sourceMaps = true,
+                    request = "launch",
+                    name = "file",
+                    program = "${file}",
+                    skipFiles = { "<node_internals>/**", "**/node_modules/**" }
                 },
                 {
                     type = "pwa-msedge",
@@ -128,23 +129,10 @@ vim.api.nvim_create_autocmd("FileType", {
                     url = "http://localhost:3000/",
                     webRoot = "${workspaceFolder}",
                     sourceMaps = true,
+                    skipFiles = { "<node_internals>/**", "**/node_modules/**" }
                 }
             }
         end
-        table.insert(dap.configurations.javascript, {
-            type = "pwa-node",
-            request = "launch",
-            name = "file",
-            program = "${file}",
-            args = function()
-                local args_string = vim.fn.input('Arguments: ')
-                local utils = require("dap.utils")
-                if utils.splitstr and vim.fn.has("nvim-0.10") == 1 then
-                    return utils.splitstr(args_string)
-                end
-                return vim.split(args_string, " +")
-            end,
-        })
 
         -- Custom breakpoint icons
         vim.fn.sign_define('DapBreakpoint',
@@ -180,7 +168,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set('n', '<S-F5>', dap.terminate, { desc = ' Terminate session' })
 
         vim.keymap.set('n', '<leader>dB', function()
-            local input = vim.fn.input 'Condition for breakpoint:'
+            local input = vim.fn.input('Condition for breakpoint:')
             dap.set_breakpoint(input)
         end, { desc = 'DAP: Conditional Breakpoint' })
         vim.keymap.set('n', '<leader>du', dapui.toggle, { desc = 'toggle dapui' })
