@@ -1,7 +1,2 @@
 #!/bin/sh
 
-pkgs_lsp="lua-language-server clangd basedpyright typescript-language-server rust-analyzer tailwindcss-language-server"
-pkgs_dap="debugpy js-debug-adapter"
-pkgs="$pkgs_lsp $pkgs_dap"
-
-nvim --headless -c "MasonInstall ${pkgs}" -c "qall"

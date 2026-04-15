@@ -13,6 +13,10 @@
       "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
       "src": "https://github.com/catppuccin/nvim"
     },
+    "mason-auto-install.nvim": {
+      "rev": "fd76cea6bbac98726c0c763deea3c449adf50daf",
+      "src": "https://github.com/owallb/mason-auto-install.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "0a3b42c3e503df87aef6d6513e13148381495c3a",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"

@@ -11,8 +11,6 @@ sudo pacman -S neovim wl-clipboard luarocks lldb lazygit tree-sitter-grammars
 
 # invoke nvim and wait for install completion
 nvim
-# install mason pkgs
-~/.config/nvim/mason-install
 ```
 ## usage
 
