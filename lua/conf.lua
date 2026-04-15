@@ -82,9 +82,9 @@ vim.opt.winborder = 'single'
 vim.opt.autoread = true
 
 -- folding
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.foldmethod = 'syntax'
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.opt.foldcolumn = '1' -- '0' is not bad
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'syntax'
+vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "" }
