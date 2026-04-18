@@ -6,10 +6,12 @@ local terminal = require("snacks.terminal")
 ---@type snacks.terminal.Opts
 local snacks_terminal_opts = {
     win = {
-        enter = true,
-        on_win = function(win)
+        position = 'right',
+        width = 0.7,
+        enter = false,
+        on_win = function(self)
             -- Set up keymaps and cleanup for an arbitrary terminal
-            require('opencode.terminal').setup(win.win)
+            require('opencode.terminal').setup(self.win)
         end,
     },
 }
@@ -40,6 +42,9 @@ end)
 vim.keymap.set({ "n", "v" }, "<leader>ox", function() opencode.select() end,
     { desc = "Execute opencode action…" })
 
-vim.keymap.set("t", "<a-c-b>", function() opencode.command("session.page.up") end, { desc = "Scroll opencode up" })
-vim.keymap.set("t", "<a-c-f>", function() opencode.command("session.page.down") end,
+vim.keymap.set({ "n", "t" }, "<a-c-c>", function() opencode.command("prompt.clear") end,
+    { desc = "Clear Prompt" })
+vim.keymap.set({ "n", "t" }, "<a-c-b>", function() opencode.command("session.page.up") end,
+    { desc = "Scroll opencode up" })
+vim.keymap.set({ "n", "t" }, "<a-c-f>", function() opencode.command("session.page.down") end,
     { desc = "Scroll opencode down" })

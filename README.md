@@ -223,8 +223,9 @@ For each line in \[range\] replace a match of {pattern} with {string}.
 - `<leader>oa` open ask window with current buffer reference(`@buffer`)
 - `{Visual}<leader>oa` open ask window with highlighted text/lines reference(`@this`)
 - `[Visual]<leader>ox` execute opencode action…
-- `{Terminal}<a-c-f>`scroll opencode page down
-- `{Terminal}<a-c-b>`scroll opencode page up
+- `{Terminal}<a-c-c>` clear prompt
+- `{Terminal}<a-c-f>` scroll opencode page down
+- `{Terminal}<a-c-b>` scroll opencode page up
 
 **debug** `:help dap.txt`, `:help dap-launch.json`
 Supported languages: Python, C/C++, JavaScript, TypeScript
