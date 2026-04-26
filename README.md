@@ -150,6 +150,14 @@ For each line in \[range\] replace a match of {pattern} with {string}.
 **lsp**
 - `<leader>th` toggle inlay hints
 - `<a-s-f>` format current buffer
+- `gra` code action
+- `gri` goto implementation
+- `grn` rename symbol
+- `grr` goto references
+- `grt` goto type definition
+- `grx` codelens run
+- `gO` list current buffer symbols
+- `gd` goto definition
 
 **other**
 - `:options` Open a window for viewing and setting all options. see `:h options`
@@ -178,14 +186,8 @@ For each line in \[range\] replace a match of {pattern} with {string}.
 - `<leader>fk` find in keymap
 - `<leader>fc` find in vim config
 
-- `gd` goto definition
-- `gr` goto references
-- `gi` goto implementation
-- `gy` goto type definition
-- `<leader>ls` list current buffer symbols  
-- `<leader>lS` list workspace symbols
-- `<leader>ld` document diagnostics
-- `<leader>lD` workspace diagnostics
+- `<leader>ld` diagnostics
+- `<leader>lD` buffer diagnostics
 
 **snacks.explorer** `:h snacks-explorer`
 - `<leader>e` open explorer

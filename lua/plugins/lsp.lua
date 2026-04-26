@@ -31,5 +31,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 end,
             })
         end
+
+        -- [override defaults]
+        vim.keymap.set("n", "gri", function() Snacks.picker.lsp_implementations() end, { desc = "goto implementation" })
+        vim.keymap.set("n", "grr", function() Snacks.picker.lsp_references() end,
+            { desc = "goto references", nowait = true })
+        vim.keymap.set("n", "grt", function() Snacks.picker.lsp_type_definitions() end, { desc = "goto type definition" })
+        vim.keymap.set("n", "gO", function() Snacks.picker.lsp_symbols() end, { desc = "buffer symbols" })
+        vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "goto definition" })
     end,
 })

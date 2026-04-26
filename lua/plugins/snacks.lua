@@ -50,15 +50,8 @@ vim.keymap.set("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc
 vim.keymap.set("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
     { desc = "find config file" })
 
-vim.keymap.set("n", "gd", function() Snacks.picker.lsp_definitions() end, { desc = "goto definition" })
-vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "goto references", nowait = true })
-vim.keymap.set("n", "gi", function() Snacks.picker.lsp_implementations() end, { desc = "goto implementation" })
-vim.keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "goto t[y]pe definition" })
-vim.keymap.set("n", "<leader>ls", function() Snacks.picker.lsp_symbols() end, { desc = "LSP current buffer symbols" })
-vim.keymap.set("n", "<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end,
-    { desc = "LSP workspace symbols" })
-vim.keymap.set("n", "<leader>ld", function() Snacks.picker.diagnostics() end, { desc = "document diagnostics" })
-vim.keymap.set("n", "<leader>lD", function() Snacks.picker.diagnostics_buffer() end, { desc = "workspace diagnostics" })
+vim.keymap.set("n", "<leader>ld", function() Snacks.picker.diagnostics() end, { desc = "diagnostics" })
+vim.keymap.set("n", "<leader>lD", function() Snacks.picker.diagnostics_buffer() end, { desc = "buffer diagnostics" })
 
 vim.keymap.set("n", "<leader>bd", function() Snacks.bufdelete.delete() end, { desc = "delete current buffer" })
 vim.keymap.set("n", "<leader>bc", function() Snacks.bufdelete.other() end, { desc = "clean other buffers" })
