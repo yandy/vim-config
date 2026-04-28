@@ -6,7 +6,9 @@ local terminal = require("snacks.terminal")
 ---@type snacks.terminal.Opts
 local snacks_terminal_opts = {
     win = {
-        enter = true,
+        position = 'right',
+        width = 0.7,
+        enter = false,
         on_win = function(self)
             -- Set up keymaps and cleanup for an arbitrary terminal
             require('opencode.terminal').setup(self.win)
