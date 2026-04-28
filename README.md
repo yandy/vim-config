@@ -197,7 +197,8 @@ For each line in \[range\] replace a match of {pattern} with {string}.
     - `r` rename current file
     - `d` delete current/selected files
     - `a` add new file or directory (directories end with `/`)
-    - `<cr>`/`l`  open file or toggle directory
+    - `<cr>`/`l` open file or toggle directory
+    - `o` open file with system application 
 - move/copy files
     1. Select files with <Tab> (works on multiple files)
     2. Navigate to the target directory
